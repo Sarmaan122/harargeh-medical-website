@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harargeh Medical & Surgical Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0066cc;
+            --primary-dark: #0052a3;
+            --secondary: #00a8e8;
+            --accent: #ff3366;
+            --light: #f8f9fa;
+            --dark: #333;
+            --gray: #6c757d;
+            --success: #28a745;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 102, 204, 0.85), rgba(0, 168, 232, 0.9)), url('https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 160px 0 100px;
+            margin-top: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #ff1a52;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+        }
+        
+        .about-features {
+            margin-top: 2rem;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature i {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        /* Doctors Section */
+        .doctors {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .doctor-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .doctor-img {
+            height: 250px;
+            background-color: #ddd;
+            overflow: hidden;
+        }
+        
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .doctor-info {
+            padding: 20px;
+        }
+        
+        .doctor-info h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .doctor-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-column p {
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Floating Contact Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .whatsapp-btn, .contact-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        .contact-btn {
+            background-color: var(--primary);
+        }
+        
+        .contact-btn:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+        
+        /* Page Content */
+        .page-content {
+            padding: 140px 0 80px;
+            background-color: var(--light);
+            min-height: 70vh;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        
+        .page-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 140px 0 80px;
+            }
+            
+            .services, .about, .doctors, .contact {
+                padding: 70px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hospital"></i>
+                <h1>Harargeh <span>Medical</span></h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="doctors.html">Doctors</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page Content -->
+    <main id="home-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Advanced Healthcare with Compassion</h2>
+                <p>Harargeh Medical and Surgical Centre provides state-of-the-art medical services with a patient-centered approach. Our team of specialists is dedicated to your health and well-being.</p>
+                <a href="contact.html" class="btn">Book an Appointment</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Medical Services</h2>
+                    <p>Comprehensive healthcare solutions for all your needs</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Cardiology</h3>
+                            <p>Advanced cardiac care with modern diagnostic tools and treatment procedures for heart diseases.</p>
+                            <a href="services.html#cardiology" class="btn btn-primary" style="margin-top: 15px;">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Neurology</h3>
+                            <p>Comprehensive neurological care for disorders of the brain, spine, and nervous system.</p>
+                            <a href="services.html#neurology" class="btn btn-primary" style="margin-top: 15px;">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Pediatrics</h3>
+                            <p>Specialized healthcare for infants, children, and adolescents in a child-friendly environment.</p>
+                            <a href="services.html#pediatrics" class="btn btn-primary" style="margin-top: 15px;">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Leading Medical Care in the Region</h2>
+                        <p>Harargeh Medical and Surgical Centre has been serving the community for over 20 years with exceptional healthcare services. Our modern facility is equipped with advanced medical technology.</p>
+                        
+                        <div class="about-features">
+                            <div class="feature">
+                                <i class="fas fa-user-md"></i>
+                                <div>
+                                    <h4>Expert Doctors</h4>
+                                    <p>Board-certified specialists with years of experience</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-hospital-user"></i>
+                                <div>
+                                    <h4>Patient-Centered Care</h4>
+                                    <p>Personalized treatment plans for every patient</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-award"></i>
+                                <div>
+                                    <h4>Quality Accreditation</h4>
+                                    <p>Internationally recognized standards of care</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="about.html" class="btn">More About Us</a>
+                    </div>
+                    
+                    <div class="about-image">
+                        <div style="background-color: #e9ecef; height: 400px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.2rem;">
+                            <i class="fas fa-hospital-alt" style="font-size: 8rem; opacity: 0.2;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Doctors Section -->
+        <section class="doctors">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Meet Our Specialists</h2>
+                    <p>Our team of highly qualified medical professionals</p>
+                </div>
+                
+                <div class="doctors-grid">
+                    <div class="doctor-card">
+                        <div class="doctor-img">
+                            <div style="background-color: #ccc; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                                <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                            </div>
+                        </div>
+                        <div class="doctor-info">
+                            <h3>Dr. Ahmed Hassan</h3>
+                            <p>Chief Cardiologist</p>
+                            <p>15+ years of experience in cardiac care</p>
+                        </div>
+                    </div>
+                    
+                    <div class="doctor-card">
+                        <div class="doctor-img">
+                            <div style="background-color: #ccc; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                                <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                            </div>
+                        </div>
+                        <div class="doctor-info">
+                            <h3>Dr. Fatima Abdullah</h3>
+                            <p>Senior Neurologist</p>
+                            <p>Specialized in neurological disorders</p>
+                        </div>
+                    </div>
+                    
+                    <div class="doctor-card">
+                        <div class="doctor-img">
+                            <div style="background-color: #ccc; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                                <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                            </div>
+                        </div>
+                        <div class="doctor-info">
+                            <h3>Dr. Omar Yusuf</h3>
+                            <p>Pediatric Specialist</h3>
+                            <p>Expert in child healthcare and development</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="doctors.html" class="btn">View All Doctors</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p>Get in touch with our medical team</p>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Our Contact Information</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Address</h4>
+                                    <p>123 Medical Street, Harar, Ethiopia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <p>+251 123 456 789</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <p>info@harargehmedical.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3>Emergency Contact</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-ambulance"></i>
+                            <div>
+                                <h4>Emergency Line</h4>
+                                <p>+251 911 123 456</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send a Message</h3>
+                        <form id="contactForm">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <input type="text" placeholder="Subject" required>
+                            <textarea placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- About Page Content (Hidden by default) -->
+    <main id="about-page" class="page-content" style="display: none;">
+        <div class="container">
+            <div class="page-header">
+                <h1>About Harargeh Medical</h1>
+                <p>Learn about our history, mission, and commitment to healthcare excellence</p>
+            </div>
+            
+            <div style="background-color: white; padding: 40px; border-radius: 10px; box-shadow: var(--shadow);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                    <div>
+                        <h2>Our History</h2>
+                        <p>Founded in 2003, Harargeh Medical and Surgical Centre began as a small clinic with a vision to provide accessible, quality healthcare to the Harar community. Over the years, we have grown into a full-fledged medical center with multiple specialties.</p>
+                        <p>Our commitment to excellence has earned us recognition as one of the leading healthcare providers in the region. We continuously invest in advanced medical technology and training for our staff to ensure we deliver world-class care.</p>
+                    </div>
+                    
+                    <div>
+                        <h2>Our Mission</h2>
+                        <p>To provide comprehensive, compassionate, and accessible healthcare services that improve the health and well-being of our community through clinical excellence, innovative technology, and a patient-centered approach.</p>
+                        
+                        <h2 style="margin-top: 30px;">Our Vision</h2>
+                        <p>To be the leading healthcare institution in Eastern Ethiopia, recognized for exceptional patient care, medical education, and community health initiatives.</p>
+                    </div>
+                </div>
+                
+                <div style="background-color: var(--light); padding: 30px; border-radius: 10px; margin-top: 30px;">
+                    <h2 style="text-align: center; color: var(--primary);">Our Values</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+                        <div style="text-align: center; padding: 20px;">
+                            <i class="fas fa-heart" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+                            <h3>Compassion</h3>
+                            <p>Treating every patient with empathy, dignity, and respect</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 20px;">
+                            <i class="fas fa-star" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+                            <h3>Excellence</h3>
+                            <p>Pursuing the highest standards in medical care</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 20px;">
+                            <i class="fas fa-handshake" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+                            <h3>Integrity</h3>
+                            <p>Upholding ethical principles in all our actions</p>
+                        </div>
+                        
+                        <div style="text-align: center; padding: 20px;">
+                            <i class="fas fa-users" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 15px;"></i>
+                            <h3>Collaboration</h3>
+                            <p>Working together for the best patient outcomes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="contact.html" class="btn">Contact Us</a>
+                    <a href="services.html" class="btn btn-primary" style="margin-left: 15px;">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Services Page Content (Hidden by default) -->
+    <main id="services-page" class="page-content" style="display: none;">
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Medical Services</h1>
+                <p>Comprehensive healthcare services for all your medical needs</p>
+            </div>
+            
+            <div style="margin-bottom: 50px;">
+                <div class="services-grid">
+                    <div class="service-card" id="cardiology">
+                        <div class="service-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Cardiology</h3>
+                            <p>Our cardiology department offers advanced diagnostic and treatment services for heart conditions including echocardiography, stress tests, cardiac catheterization, and interventional cardiology procedures.</p>
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>Cardiac Consultation</li>
+                                <li>Echocardiography</li>
+                                <li>Stress Testing</li>
+                                <li>Angioplasty & Stenting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card" id="neurology">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Neurology</h3>
+                            <p>Our neurology department provides comprehensive care for disorders of the brain, spine, and nervous system including epilepsy, stroke, Parkinson's disease, and multiple sclerosis.</p>
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>Neurological Consultation</li>
+                                <li>EEG & EMG Testing</li>
+                                <li>Stroke Management</li>
+                                <li>Headache Clinic</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card" id="pediatrics">
+                        <div class="service-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Pediatrics</h3>
+                            <p>Our pediatric department provides specialized healthcare for infants, children, and adolescents in a child-friendly environment with services ranging from routine checkups to specialized care.</p>
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>Well-child Visits</li>
+                                <li>Vaccinations</li>
+                                <li>Developmental Screening</li>
+                                <li>Pediatric Emergency Care</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-x-ray"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Radiology</h3>
+                            <p>Our radiology department provides state-of-the-art imaging services including X-ray, ultrasound, CT scan, and MRI to support accurate diagnosis and treatment planning.</p>
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>Digital X-ray</li>
+                                <li>Ultrasound Scanning</li>
+                                <li>CT Scan</li>
+                                <li>MRI Services</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-procedures"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>General Surgery</h3>
+                            <p>Our surgical department offers a wide range of surgical procedures including minimally invasive surgeries, laparoscopic procedures, and traditional surgeries with modern techniques.</p>
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>Laparoscopic Surgery</li>
+                                <li>Gastrointestinal Surgery</li>
+                                <li>Trauma Surgery</li>
+                                <li>Minor Surgical Procedures</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Ophthalmology</h3>
+                            <p>Our ophthalmology department provides comprehensive eye care including vision testing, cataract surgery, glaucoma treatment, and correction of refractive errors.</p>
+                            <ul style="margin-top: 15px; padding-left: 20px;">
+                                <li>Eye Examinations</li>
+                                <li>Cataract Surgery</li>
+                                <li>Glaucoma Management</li>
+                                <li>LASIK & Refractive Surgery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="contact.html" class="btn">Book an Appointment</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Doctors Page Content (Hidden by default) -->
+    <main id="doctors-page" class="page-content" style="display: none;">
+        <div class="container">
+            <div class="page-header">
+                <h1>Our Medical Team</h1>
+                <p>Meet our team of experienced and dedicated healthcare professionals</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <div style="background-color: #ddd; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                            <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                        </div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Ahmed Hassan</h3>
+                        <p><strong>Chief Cardiologist</strong></p>
+                        <p>MBBS, MD (Cardiology), FACC</p>
+                        <p>15+ years of experience in cardiac care. Specializes in interventional cardiology and heart failure management.</p>
+                        <div style="margin-top: 15px;">
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Echocardiography</span>
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Angioplasty</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <div style="background-color: #ddd; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                            <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                        </div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Fatima Abdullah</h3>
+                        <p><strong>Senior Neurologist</strong></p>
+                        <p>MBBS, MD (Neurology), DM (Neurology)</p>
+                        <p>Specialized in stroke management, epilepsy, and movement disorders. 12+ years of clinical experience.</p>
+                        <div style="margin-top: 15px;">
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Stroke Care</span>
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Epilepsy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <div style="background-color: #ddd; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                            <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                        </div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Omar Yusuf</h3>
+                        <p><strong>Pediatric Specialist</strong></p>
+                        <p>MBBS, MD (Pediatrics), DCH</p>
+                        <p>Expert in child healthcare, development, and pediatric emergencies. 10+ years of experience.</p>
+                        <div style="margin-top: 15px;">
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Vaccinations</span>
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Child Development</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <div style="background-color: #ddd; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                            <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                        </div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Sarah Mohammed</h3>
+                        <p><strong>General Surgeon</strong></p>
+                        <p>MBBS, MS (General Surgery), FACS</p>
+                        <p>Specializes in laparoscopic and gastrointestinal surgeries. 8+ years of surgical experience.</p>
+                        <div style="margin-top: 15px;">
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Laparoscopy</span>
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">GI Surgery</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <div style="background-color: #ddd; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                            <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                        </div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Jamal Ahmed</h3>
+                        <p><strong>Radiologist</strong></p>
+                        <p>MBBS, MD (Radiology), DMRD</p>
+                        <p>Expert in diagnostic imaging including MRI, CT, and ultrasound. 9+ years of experience.</p>
+                        <div style="margin-top: 15px;">
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">MRI</span>
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">CT Scan</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img">
+                        <div style="background-color: #ddd; height: 100%; display: flex; align-items: center; justify-content: center; color: #777;">
+                            <i class="fas fa-user-md" style="font-size: 6rem;"></i>
+                        </div>
+                    </div>
+                    <div class="doctor-info">
+                        <h3>Dr. Aisha Omar</h3>
+                        <p><strong>Ophthalmologist</strong></p>
+                        <p>MBBS, MS (Ophthalmology), FRCS</p>
+                        <p>Specializes in cataract surgery, glaucoma treatment, and refractive surgery. 7+ years of experience.</p>
+                        <div style="margin-top: 15px;">
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Cataract</span>
+                            <span style="background-color: var(--light); padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-right: 5px;">Glaucoma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="contact.html" class="btn">Book a Consultation</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Contact Page Content (Hidden by default) -->
+    <main id="contact-page" class="page-content" style="display: none;">
+        <div class="container">
+            <div class="page-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our medical team for appointments, inquiries, or emergencies</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>123 Medical Street, Harar, Ethiopia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+251 123 456 789</p>
+                                <p>+251 987 654 321</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@harargehmedical.com</p>
+                                <p>appointments@harargehmedical.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Working Hours</h4>
+                                <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
+                                <p>Saturday: 9:00 AM - 5:00 PM</p>
+                                <p>Emergency: 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>Emergency Contact</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-ambulance"></i>
+                        <div>
+                            <h4>Emergency Line</h4>
+                            <p>+251 911 123 456</p>
+                            <p>Available 24 hours, 7 days a week</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactPageForm">
+                        <input type="text" placeholder="Your Full Name" required>
+                        <input type="email" placeholder="Your Email Address" required>
+                        <input type="tel" placeholder="Your Phone Number" required>
+                        <select style="width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Poppins', sans-serif;">
+                            <option value="">Select Department</option>
+                            <option value="cardiology">Cardiology</option>
+                            <option value="neurology">Neurology</option>
+                            <option value="pediatrics">Pediatrics</option>
+                            <option value="surgery">General Surgery</option>
+                            <option value="ophthalmology">Ophthalmology</option>
+                            <option value="radiology">Radiology</option>
+                        </select>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div style="margin-top: 60px; background-color: white; padding: 30px; border-radius: 10px; box-shadow: var(--shadow);">
+                <h3 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Location Map</h3>
+                <div style="background-color: #e9ecef; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary);">
+                    <i class="fas fa-map-marked-alt" style="font-size: 4rem; margin-right: 15px;"></i>
+                    <div>
+                        <h3>Harargeh Medical & Surgical Centre</h3>
+                        <p>123 Medical Street, Harar, Ethiopia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Harargeh Medical</h3>
+                    <p>Providing advanced healthcare with compassion for over 20 years. Your health is our priority.</p>
+                    <div class="contact-item" style="color: #ccc;">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <p>+251 123 456 789</p>
+                        </div>
+                    </div>
+                    <div class="contact-item" style="color: #ccc;">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info@harargehmedical.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Our Services</a></li>
+                        <li><a href="doctors.html">Our Doctors</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="services.html#cardiology">Cardiology</a></li>
+                        <li><a href="services.html#neurology">Neurology</a></li>
+                        <li><a href="services.html#pediatrics">Pediatrics</a></li>
+                        <li><a href="services.html">General Surgery</a></li>
+                        <li><a href="services.html">Radiology</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Emergency</h3>
+                    <p>For medical emergencies, call our 24/7 emergency line:</p>
+                    <div style="background-color: var(--accent); color: white; padding: 15px; border-radius: 5px; margin-top: 15px; text-align: center;">
+                        <h3 style="color: white; margin-bottom: 5px;">Emergency Line</h3>
+                        <p style="font-size: 1.5rem; font-weight: bold;">+251 911 123 456</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Harargeh Medical and Surgical Centre. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/251911123456" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="contact.html" class="contact-btn">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Page Navigation
+        const navLinks = document.querySelectorAll('nav a');
+        const pages = {
+            'index.html': 'home-page',
+            'about.html': 'about-page',
+            'services.html': 'services-page',
+            'doctors.html': 'doctors-page',
+            'contact.html': 'contact-page'
+        };
+        
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('main').forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show the selected page
+            document.getElementById(pageId).style.display = 'block';
+            
+            // Update active link
+            navLinks.forEach(link => {
+                link.style.color = '';
+                link.style.fontWeight = '';
+            });
+            
+            // Set active link based on current page
+            const activeLink = document.querySelector(`nav a[href="${Object.keys(pages).find(key => pages[key] === pageId)}"]`);
+            if (activeLink) {
+                activeLink.style.color = 'var(--primary)';
+                activeLink.style.fontWeight = '600';
+            }
+            
+            // Close mobile menu if open
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Handle navigation link clicks
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('href');
+                showPage(pages[page]);
+            });
+        });
+        
+        // Handle form submissions
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message. We will contact you soon!');
+                form.reset();
+            });
+        });
+        
+        // Show home page by default
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home-page');
+        });
+    </script>
+</body>
+</html>
